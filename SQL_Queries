@@ -1,0 +1,49 @@
+----What are the names of the stations that bike_id 1710 started from?
+SELECT 
+  DISTINCT start_station_name
+FROM `bigquery-public-data.london_bicycles.cycle_hire` 
+WHERE bike_id=1710
+ORDER BY start_station_name ASC
+LIMIT 1000;
+
+----How many bike_ids have ended at "Moor Street, Soho"?
+SELECT 
+  COUNT(DISTINCT bike_id)
+  AS bike_ids
+FROM `bigquery-public-data.london_bicycles.cycle_hire` 
+WHERE end_station_name = 'Moor Street, Soho';
+
+----What is the station_id for "Canton Street, Poplar"?
+SELECT 
+  id
+FROM `bigquery-public-data.london_bicycles.cycle_stations` 
+WHERE name = 'Canton Street, Poplar';
+
+----What is the name of the station whose ID is 111?
+SELECT 
+  name
+FROM `bigquery-public-data.london_bicycles.cycle_stations`
+WHERE id = 111;
+
+----How many distinct bike_ids had trip durations greater than 2400 seconds (or 40 minutes)?
+SELECT
+  COUNT(DISTINCT bike_id) 
+  AS distinct_bike_ids
+FROM `bigquery-public-data.london_bicycles.cycle_hire`
+WHERE duration > 2400;
+
+----At what station did the bike trip with rental_id 57635395 end?
+SELECT 
+  end_station_name
+FROM `bigquery-public-data.london_bicycles.cycle_hire`
+WHERE rental_id = 57635395;
+
+----top five baby names for boys in the United States in 2014
+SELECT 
+  name,
+  count
+FROM `molten-kit-375003.babynames.names_2014` 
+WHERE gender = "M"
+ORDER BY 
+  count DESC
+LIMIT 5;
